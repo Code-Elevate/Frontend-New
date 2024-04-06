@@ -1,38 +1,52 @@
 {
-  "name": "codeelevate",
-  "version": "0.1.0",
+  "name": "leet-code-clone",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
+    "@phosphor-icons/react": "^2.0.15",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@uiw/codemirror-extensions-color": "^4.21.21",
+    "@uiw/codemirror-extensions-hyper-link": "^4.21.21",
+    "@uiw/codemirror-extensions-langs": "^4.21.21",
+    "@uiw/codemirror-theme-material": "^4.19.16",
+    "@uiw/codemirror-themes": "^4.19.16",
+    "@uiw/codemirror-themes-all": "^4.21.21",
+    "@uiw/react-codemirror": "4.10.4",
+    "@uiw/react-split": "^5.8.10",
+    "axios": "^1.6.8",
+    "classnames": "^2.3.2",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-avatar": "^5.0.3",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.22.3",
+    "react-slick": "^0.30.2",
+    "react-split": "^2.0.14",
+    "rollup": "^3.21.0",
+    "save": "^2.9.0",
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.5",
+    "uuid": "^9.0.1",
+    "vscode-icons-js": "^11.6.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@iconify/react": "^4.1.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vite": "^4.2.0"
   }
 }
