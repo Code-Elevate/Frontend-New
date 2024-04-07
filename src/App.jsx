@@ -21,7 +21,7 @@ function App() {
       <Route path="/contest/:contestId" element={<ContestDetails />}/>
       <Route  path="/profilePage" exact element={<ProfilePage />}/>
       <Route  path="/hostContest" exact element={<HostContestPage />}/>
-      <Route  path="/addProblems" exact element={<AddProblemsPage />}/>
+      <Route  path="/addProblems/:contestId" exact element={<AddProblemsPage />}/>
       </Routes>
     </Router>
   );

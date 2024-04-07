@@ -180,7 +180,10 @@ const HomePage = () => {
                     compete with fellow enthusiasts, and elevate your coding
                     prowess.
             </p>
+            <Link to={'/hostContest'}>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Explore</button>
+            </Link>
+            
             
             </div>
             <div className="feature-div rounded shadow-md p-4 w-1/3 h-51 gradient-bg hover:scale-110 transition-transform duration-300 ease-in-out ">
@@ -189,6 +192,7 @@ const HomePage = () => {
             Dive into a world of coding freedom with our platform's
                     support for a diverse range of programming languages.
             </p>
+            
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Explore</button>
             </div>
           </div>

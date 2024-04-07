@@ -1,7 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const AddProblemsPage = () => {
+  const { contestId } = useParams();
   const [problems, setProblems] = useState([]);
+  const [contestDetails, setContestDetails] = useState('');
+  useEffect(() => {
+    const fetchContestDetails = async () => {
+      try {
+        const response = await axios.get(`https://code-elevate.onrender.com/api/contests/${contestId}`);
+        setContestDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching contest details:', error);
+      }
+    };
+
+    fetchContestDetails();
+  }, [contestId]);
   const [newProblem, setNewProblem] = useState({
     title: '',
     statement: '',
@@ -79,7 +95,8 @@ const AddProblemsPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4 text-center">Add Problems</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center">Add Problems:{contestDetails.title}</h2>
+      <p className='mb-5'>Description: {contestDetails.description}</p>
       <div className="flex flex-col">
           <input
             type="text"
