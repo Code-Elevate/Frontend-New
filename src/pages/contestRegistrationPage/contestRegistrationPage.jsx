@@ -13,39 +13,15 @@ const ContestRegistrationPage = () => {
   useEffect(() => {
 
     // Retrieve x-auth-token from local storage
-var authToken = localStorage.getItem('x-auth-token');
 
-var data = JSON.stringify({
-  "name": "Team Name",
-  "members": [
-    "username2"
-  ]
-});
 
-var config = {
-  method: 'post',
-  maxBodyLength: Infinity,
-  url: 'https://code-elevate.onrender.com/api/contests/contestId/register', // Replace contestId with the actual contest ID
-  headers: { 
-    'x-auth-token': authToken, // Set x-auth-token retrieved from local storage
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
 
-axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-    // Display registration successful message
-    console.log('Registration successful');
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+
     const fetchContestDetails = async () => {
       try {
         const response = await fetch(`https://code-elevate.onrender.com/api/contests/${contestId}`);
         const data = await response.json();
+        console.log('Contest ID:', contestId);
         setMaxSize(data.maxTeamSize);
       } catch (error) {
         console.error('Error fetching contest details:', error);
@@ -82,18 +58,19 @@ axios(config)
 
   const handleEnterContest = async () => {
     try {
-      const token = localStorage.getItem('x-auth-token'); // Retrieve token from local storage
+      const token = localStorage.getItem('x-auth-token'); 
       const data = JSON.stringify({
-        name: 'Team Name',
-        members: ['username2']
+        name: teamName, 
+        members: participants 
       });
+      
 
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
         url: `https://code-elevate.onrender.com/api/contests/${contestId}/register`,
         headers: {
-          'x-auth-token': token, // Include token in headers
+          'x-auth-token': localStorage.getItem('x-auth-token'), 
           'Content-Type': 'application/json'
         },
         data: data
@@ -101,10 +78,10 @@ axios(config)
 
       const response = await axios(config);
       console.log('Registration successful:', response.data);
-      // You can add further actions here, such as displaying a success message to the user
+      
     } catch (error) {
       console.error('Registration failed:', error);
-      // You can handle the error, such as displaying an error message to the user
+     
     }
   };
 
