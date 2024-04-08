@@ -121,7 +121,7 @@ const AddProblemsPage = () => {
         }
       );
       console.log('Problem added successfully:', response.data);
-      // Clear the form after adding the problem
+      
       setNewProblem({
         title: '',
         statement: '',
@@ -134,7 +134,7 @@ const AddProblemsPage = () => {
         score: 0,
         testCases: [],
       });
-      // Optionally, you can update the list of problems displayed on the page
+      
       setProblems([...problems, response.data]);
     } catch (error) {
       console.error('Error adding problem:', error);
@@ -368,7 +368,7 @@ const AddProblemsPage = () => {
                   <td>{testCase.input}</td>
                   <td>{testCase.output}</td>
                   <td>
-                  <button onClick={() => handleDeleteTestCase(index)}>Delete</button> {/* Add delete button */}
+                  <button onClick={() => handleDeleteTestCase(index)}>Delete</button> 
                   </td>
                 </tr>
               ))}
