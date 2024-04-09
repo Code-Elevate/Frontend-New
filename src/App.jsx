@@ -8,6 +8,7 @@ import ProfilePage from "./pages/profilePage/profilePage";
 import ExplorePage from "./pages/explorePage/explorePage";
 import HostContestPage from "./pages/hostContestPage/hostContestPage";
 import AddProblemsPage from "./pages/addProblemsPage/addProblemsPage";
+import ProblemsPage from "./pages/problemsPage/problemsPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route  path="/profilePage" exact element={<ProfilePage />}/>
       <Route  path="/hostContest" exact element={<HostContestPage />}/>
       <Route  path="/addProblems/:contestId" exact element={<AddProblemsPage />}/>
+      <Route path="/problems/:contestId" element={<ProblemsPage />} />
       </Routes>
     </Router>
   );

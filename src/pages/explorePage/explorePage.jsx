@@ -56,14 +56,14 @@ const HomePage = () => {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
       <div className="bg-white p-8 rounded shadow-md w-full mx-auto">
-        <div className="flex">
-          <div className="w-1/2 ">
-            <h1 className="text-5xl font-semibold mb-4">Welcome</h1>
+        <div className="flex  items-center justify-center ">
+          <div className="w-1/2 text-center ">
+            <h1 className="text-5xl font-semibold mb-4 gradient-text">Just Code It!</h1>
             <h2 className=" text-3xl text-gray-600">
               Enhance your skills with us and bag those technical interviews.
             </h2>
           </div>
-          <div className="w-1/2">
+          <div className="w-1/3">
             <img
               src={Coder}
               alt="Coder"
@@ -72,7 +72,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="mt-8">
-          <h2 className="text-2xl font-semibold mb-4 text-center">Contests</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center gradient-text">Contests</h2>
           <h3 className="text-lg font-semibold mb-2">Upcoming Contests</h3>
           <div className="contest-div rounded shadow-md p-4 h-48 overflow-y-auto">
           
@@ -90,7 +90,7 @@ const HomePage = () => {
                 {upcomingContests.map((contest) => (
                 
                   <tr key={contest.id}>
-                    <td><Link to={`/contest/${contest.id}`}>{contest.id}</Link></td>
+                    <td className='gradient-text hover:text-blue-700 cursor-pointer'><Link to={`/contest/${contest.id}`}>{contest.id}</Link></td>
                     <td>{contest.title}</td>
                     <td>{new Date(contest.startTime).toLocaleString()}</td>
                     <td>{new Date(contest.endTime).toLocaleString()}</td>
@@ -119,7 +119,7 @@ const HomePage = () => {
               <tbody>
                 {runningContests.map((contest) => (
                   <tr key={contest.id}>
-                    <td>{contest.id}</td>
+                    <td className='gradient-text hover:text-blue-700 cursor-pointer'><Link to={`/contest/${contest.id}`}>{contest.id}</Link></td>
                     <td>{contest.title}</td>
                     <td>{new Date(contest.startTime).toLocaleString()}</td>
                     <td>{new Date(contest.endTime).toLocaleString()}</td>
@@ -148,7 +148,7 @@ const HomePage = () => {
               <tbody>
                 {pastContests.map((contest) => (
                   <tr key={contest.id}>
-                    <td>{contest.id}</td>
+                    <td className='gradient-text'>{contest.id}</td>
                     <td>{contest.title}</td>
                     <td>{new Date(contest.startTime).toLocaleString()}</td>
                     <td>{new Date(contest.endTime).toLocaleString()}</td>
@@ -160,7 +160,7 @@ const HomePage = () => {
             )}
           </div>
           {/* New feature divs */}
-          <h2 className="text-2xl font-semibold mb-4 text-center">Our Features</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center gradient-text">Our Features</h2>
           <div className="flex justify-between mt-8">
           
             <div className="feature-div rounded shadow-md p-4 w-1/3 mr-4 h-51 gradient-bg hover:scale-110 transition-transform duration-300 ease-in-out">
@@ -196,26 +196,7 @@ const HomePage = () => {
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Explore</button>
             </div>
           </div>
-          <div className="mt-8">
-          <h2 className="text-2xl font-semibold mb-4">Coding Playground</h2>
-          <div className="flex justify-between">
-            <div className="w-1/2 mr-4">
-              <textarea
-                value={code}
-                onChange={handleCodeChange}
-                className="border border-gray-300 rounded-md h-64 w-full p-2"
-                placeholder="Write your code here..."
-              ></textarea>
-            </div>
-            <div className="w-1/2">
-              <iframe
-                className="border border-gray-300 rounded-md h-64 w-full"
-                title="Code Output"
-                srcDoc={`<html><body>${code}</body></html>`}
-              ></iframe>
-            </div>
-          </div>
-        </div>
+ 
         </div>
       </div>
       <style>
@@ -233,6 +214,12 @@ const HomePage = () => {
           }
           .feature-div {
             margin-top: 20px;
+          }
+          .gradient-text {
+            background-image: linear-gradient(to right, #5a67d8, #886aea);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
           }
         `}
       </style>
