@@ -1,14 +1,15 @@
 import React,{ useState,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Navbar from '../../components/navbar/navbar';
 import Coder from '../../assets/coder-img.png';
 import axios from 'axios';
 
 const HomePage = () => {
-    const [code, setCode] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('x-auth-token')); 
     const [upcomingContests, setUpcomingContests] = useState([]);
   const [runningContests, setRunningContests] = useState([]);
   const [pastContests, setPastContests] = useState([]);
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchUpcomingContests = async () => {
@@ -48,13 +49,38 @@ const HomePage = () => {
     fetchPastContests();
   }, []);
   
-    const handleCodeChange = (event) => {
-      setCode(event.target.value);
+    
+    const handleExploreButtonClickHostContest = () => {
+        if (!isLoggedIn) {
+            // Display a message if the user is not logged in
+            alert('Please log in first to explore.');
+            navigate('/');
+            
+        } else {
+            // Navigate to the host contest page
+            // You can replace this with your navigation logic
+            console.log('Navigating to host contest page...');
+            navigate('/hostContest');
+        }
+    };
+    const handleExploreButtonClickCollabCoding = () => {
+        if (!isLoggedIn) {
+            // Display a message if the user is not logged in
+            alert('Please log in first to explore.');
+            navigate('/');
+            
+        } else {
+            // Navigate to the host contest page
+            // You can replace this with your navigation logic
+            console.log('Navigating to sample problems page...');
+            navigate('/problems');
+        }
     };
   
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
+
       <div className="bg-white p-8 rounded shadow-md w-full mx-auto">
         <div className="flex  items-center justify-center ">
           <div className="w-1/2 text-center ">
@@ -72,12 +98,15 @@ const HomePage = () => {
           </div>
         </div>
         <div className="mt-8">
-          <h2 className="text-2xl font-semibold mb-4 text-center gradient-text">Contests</h2>
-          <h3 className="text-lg font-semibold mb-2">Upcoming Contests</h3>
+          <h2 className="text-4xl font-semibold mb-4 text-center gradient-text">Contests</h2>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Upcoming Contests</h3>
           <div className="contest-div rounded shadow-md p-4 h-48 overflow-y-auto">
           
-            <table className="w-full">
-              <thead>
+          {upcomingContests.length === 0 ? (
+              <p>No upcoming contests available</p>
+            ) : (
+              <table className="w-full">
+                <thead className='text-gray-600'>
                 <tr>
                   <th>Contest Id</th>
                   <th>Title</th>
@@ -88,7 +117,6 @@ const HomePage = () => {
               </thead>
               <tbody>
                 {upcomingContests.map((contest) => (
-                
                   <tr key={contest.id}>
                     <td className='gradient-text hover:text-blue-700 cursor-pointer'><Link to={`/contest/${contest.id}`}>{contest.id}</Link></td>
                     <td>{contest.title}</td>
@@ -98,16 +126,17 @@ const HomePage = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
+              </table>
+            )}
             
           </div>
-          <h3 className="text-lg font-semibold mb-2">Running Contests</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Running Contests</h3>
           <div className="contest-div rounded shadow-md p-4 mt-8 h-48 overflow-y-auto">
           {runningContests.length === 0 ? (
     <p>No running contests available</p>
   ) : (
             <table className="w-full">
-            <thead>
+            <thead className='text-gray-600'>
                 <tr>
                   <th>Contest Id</th>
                   <th>Title</th>
@@ -130,14 +159,14 @@ const HomePage = () => {
             </table>
             )}
           </div>
-          <h3 className="text-lg font-semibold mb-2 ">Past Contests</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-600">Past Contests</h3>
           <div className="contest-div rounded shadow-md p-4 mt-8 h-48 overflow-y-auto">
           {pastContests.length === 0 ? (
     <p>No past contests available</p>
   ) : (
             <table className="w-full">
-            <thead>
-                <tr>
+            <thead className='text-gray-600'>
+                <tr className='text-gray-600'>
                   <th>Contest Id</th>
                   <th>Title</th>
                   <th>Start Time</th>
@@ -170,19 +199,25 @@ const HomePage = () => {
                   solutions, refining algorithms, and conquering challenges
                   together.
             </p>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Explore</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5"
+                    onClick={{handleExploreButtonClickCollabCoding}}>Explore</button>
             </div>
             <div className="feature-div rounded shadow-md p-4 w-1/3 mr-4 h-51 hover:scale-110 transition-transform duration-300 ease-in-out">
-            <h2 className="text-2xl font-semibold mb-4 text-center">Contest Hosting</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">Host Contest</h2>
             <p>
             Embrace the opportunity to showcase your skills,
                     <br />
                     compete with fellow enthusiasts, and elevate your coding
                     prowess.
             </p>
-            <Link to={'/hostContest'}>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Explore</button>
-            </Link>
+            
+                    <button 
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5"
+                        onClick={handleExploreButtonClickHostContest} 
+                    >
+                        Explore
+                    </button>
+                
             
             
             </div>
@@ -193,12 +228,16 @@ const HomePage = () => {
                     support for a diverse range of programming languages.
             </p>
             
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Explore</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5"
+                    onClick={handleExploreButtonClickCollabCoding}>Explore</button>
             </div>
           </div>
  
         </div>
-      </div>
+        </div>
+
+      
+      
       <style>
         {`
           /* Gradient background styles */

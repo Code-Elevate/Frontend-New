@@ -1,0 +1,394 @@
+[
+    {
+      "id": "drive_overspeeding",
+      "title": "Drive Overspeeding",
+      "statement": "Alice is going for a drive. During her drive, she reached a maximum speed of S km/hr.\n\nAs per the rules of the government, the speed of the vehicle must not exceed 40 km/hr, otherwise the person will be fined.\n\nYou need to tell whether Alice will be fined or not.",
+      "input": "The only line of input will contain a single integer S - denoting the maximum speed Alice reached while driving.",
+      "output": "Print YES if Alice will be fined , otherwise print NO.\n\nYou may print each character of the string in uppercase or lowercase (for example, the strings YES, yEs, yes, and yeS will all be treated as identical).",
+      "constraints": "1 ≤ S ≤ 50",
+      "samples": [
+        {
+          "input": "40",
+          "output": "NO",
+          "explanation": "Since Alice's speed does not exceed 40, she will not be fined."
+        },
+        {
+          "input": "41",
+          "output": "YES",
+          "explanation": "Since Alice's speed exceeds 40, she will be fined."
+        }
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "if-else",
+        "conditional"
+      ],
+      "testCases": [
+        {
+          "input": "50",
+          "output": "YES"
+        },
+        {
+          "input": "30",
+          "output": "NO"
+        }
+      ],
+      "score": 100
+    },
+    {
+      "id": "even_or_odd",
+      "title": "Even or Odd",
+      "statement": "Given an integer N, determine whether it is even or odd.",
+      "input": "The only line of input will contain a single integer N.",
+      "output": "Print EVEN if N is even, otherwise print ODD.",
+      "constraints": "-10^9 ≤ N ≤ 10^9",
+      "samples": [
+        {
+          "input": "4",
+          "output": "EVEN",
+          "explanation": "4 is an even number."
+        },
+        {
+          "input": "-7",
+          "output": "ODD",
+          "explanation": "-7 is an odd number."
+        }
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "if-else",
+        "conditional"
+      ],
+      "testCases": [
+        {
+          "input": "0",
+          "output": "EVEN"
+        },
+        {
+          "input": "101",
+          "output": "ODD"
+        }
+      ],
+      "score": 100
+    },
+    {
+      "id": "factorial",
+      "title": "Factorial",
+      "statement": "Given a non-negative integer N, compute its factorial.",
+      "input": "The only line of input will contain a single integer N (0 ≤ N ≤ 20).",
+      "output": "Print the factorial of N.",
+      "constraints": "0 ≤ N ≤ 20",
+      "samples": [
+        {
+          "input": "5",
+          "output": "120",
+          "explanation": "5! = 5 * 4 * 3 * 2 * 1 = 120"
+        },
+        {
+          "input": "0",
+          "output": "1",
+          "explanation": "0! = 1 by convention."
+        }
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "loop",
+        "recursion"
+      ],
+      "testCases": [
+        {
+          "input": "10",
+          "output": "3628800"
+        },
+        {
+          "input": "1",
+          "output": "1"
+        }
+      ],
+      "score": 100
+    },
+    {
+      "id": "sum_of_digits",
+      "title": "Sum of Digits",
+      "statement": "Given an integer N, compute the sum of its digits.",
+      "input": "The only line of input will contain a single integer N (0 ≤ N ≤ 10^9).",
+      "output": "Print the sum of the digits of N.",
+      "constraints": "0 ≤ N ≤ 10^9",
+      "samples": [
+        {
+          "input": "12345",
+          "output": "15",
+          "explanation": "The sum of the digits of 12345 is 1+2+3+4+5 = 15."
+        },
+        {
+          "input": "987654321",
+          "output": "45",
+          "explanation": "The sum of the digits of 987654321 is 9+8+7+6+5+4+3+2+1 = 45."
+        }
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "loop",
+        "math"
+      ],
+      "testCases": [
+        {
+          "input": "1111",
+          "output": "4"
+        },
+        {
+          "input": "1000000",
+          "output": "1"
+        }
+      ],
+      "score": 100
+    },
+    {
+        "id": "reverse_number",
+        "title": "Reverse Number",
+        "statement": "Given an integer N, reverse its digits.",
+        "input": "The only line of input will contain a single integer N (0 ≤ N ≤ 10^9).",
+        "output": "Print the reverse of the digits of N.",
+        "constraints": "0 ≤ N ≤ 10^9",
+        "samples": [
+          {
+            "input": "12345",
+            "output": "54321",
+            "explanation": "The reverse of the digits of 12345 is 54321."
+          },
+          {
+            "input": "100",
+            "output": "1",
+            "explanation": "The reverse of the digits of 100 is 001, which is 1."
+          }
+        ],
+        "difficulty": "Easy",
+        "tags": [
+          "loop"
+        ],
+        "testCases": [
+          {
+            "input": "987654321",
+            "output": "123456789"
+          },
+          {
+            "input": "1",
+            "output": "1"
+          }
+        ],
+        "score": 100
+      },
+      {
+        "id": "prime_number",
+        "title": "Prime Number",
+        "statement": "Given an integer N, determine whether it is a prime number or not.",
+        "input": "The only line of input will contain a single integer N (1 ≤ N ≤ 10^6).",
+        "output": "Print YES if N is a prime number, otherwise print NO.",
+        "constraints": "1 ≤ N ≤ 10^6",
+        "samples": [
+          {
+            "input": "17",
+            "output": "YES",
+            "explanation": "17 is a prime number."
+          },
+          {
+            "input": "10",
+            "output": "NO",
+            "explanation": "10 is not a prime number."
+          }
+        ],
+        "difficulty": "Easy",
+        "tags": [
+          "math",
+          "number theory"
+        ],
+        "testCases": [
+          {
+            "input": "23",
+            "output": "YES"
+          },
+          {
+            "input": "4",
+            "output": "NO"
+          }
+        ],
+        "score": 100
+      },
+      {
+        "id": "square_root",
+        "title": "Square Root",
+        "statement": "Given a non-negative integer N, compute its square root.",
+        "input": "The only line of input will contain a single integer N (0 ≤ N ≤ 10^9).",
+        "output": "Print the square root of N with an absolute error less than or equal to 10^-6.",
+        "constraints": "0 ≤ N ≤ 10^9",
+        "samples": [
+          {
+            "input": "25",
+            "output": "5",
+            "explanation": "The square root of 25 is 5."
+          },
+          {
+            "input": "0",
+            "output": "0",
+            "explanation": "The square root of 0 is 0."
+          }
+        ],
+        "difficulty": "Easy",
+        "tags": [
+          "math"
+        ],
+        "testCases": [
+          {
+            "input": "100",
+            "output": "10"
+          },
+          {
+            "input": "49",
+            "output": "7"
+          }
+        ],
+        "score": 100
+      },
+      {
+        "id": "binary_to_decimal",
+        "title": "Binary to Decimal",
+        "statement": "Given a binary number as a string, convert it to its decimal representation.",
+        "input": "The only line of input will contain a string of length N (1 ≤ N ≤ 10^3) consisting of '0's and '1's.",
+        "output": "Print the decimal representation of the given binary number.",
+        "constraints": "1 ≤ N ≤ 10^3",
+        "samples": [
+          {
+            "input": "1010",
+            "output": "10",
+            "explanation": "The binary number 1010 is equivalent to 10 in decimal."
+          },
+          {
+            "input": "1111",
+            "output": "15",
+            "explanation": "The binary number 1111 is equivalent to 15 in decimal."
+          }
+        ],
+        "difficulty": "Easy",
+        "tags": [
+          "math"
+        ],
+        "testCases": [
+          {
+            "input": "1001",
+            "output": "9"
+          },
+          {
+            "input": "110",
+            "output": "6"
+          }
+        ],
+        "score": 100
+      },
+      {
+        "id": "fibonacci_series",
+        "title": "Fibonacci Series",
+        "statement": "Given an integer N, print the first N terms of the Fibonacci series.",
+        "input": "The only line of input will contain a single integer N (1 ≤ N ≤ 100).",
+        "output": "Print the first N terms of the Fibonacci series separated by spaces.",
+        "constraints": "1 ≤ N ≤ 100",
+        "samples": [
+          {
+            "input": "5",
+            "output": "0 1 1 2 3",
+            "explanation": "The first 5 terms of the Fibonacci series are 0, 1, 1, 2, 3."
+          },
+          {
+            "input": "8",
+            "output": "0 1 1 2 3 5 8 13",
+            "explanation": "The first 8 terms of the Fibonacci series are 0, 1, 1, 2, 3, 5, 8, 13."
+          }
+        ],
+        "difficulty": "Easy",
+        "tags": [
+          "loop"
+        ],
+        "testCases": [
+          {
+            "input": "10",
+            "output": "0 1 1 2 3 5 8 13 21 34"
+          },
+          {
+            "input": "3",
+            "output": "0 1 1"
+          }
+        ],
+        "score": 100
+      },
+      {
+        "id": "find_maximum",
+"title": "Find Maximum",
+"statement": "Given an array of integers, find the maximum element in the array.",
+"input": "The first line of input contains an integer N (1 ≤ N ≤ 10^5) representing the size of the array. The second line contains N integers separated by space.",
+"output": "Print the maximum element in the array.",
+"constraints": "1 ≤ N ≤ 10^5, -10^9 ≤ array elements ≤ 10^9",
+"samples": [
+  {
+    "input": "5\n1 4 6 3 8",
+    "output": "8",
+    "explanation": "The maximum element in the array [1, 4, 6, 3, 8] is 8."
+  },
+  {
+    "input": "3\n-5 -1 -10",
+    "output": "-1",
+    "explanation": "The maximum element in the array [-5, -1, -10] is -1."
+  }
+],
+"difficulty": "Easy",
+"tags": [
+  "array"
+],
+"testCases": [
+  {
+    "input": "4\n10 20 30 40",
+    "output": "40"
+  },
+  {
+    "input": "6\n-3 -5 -7 -9 -11 -13",
+    "output": "-3"
+  }
+],
+"score": 100
+},
+{
+"id": "count_vowels",
+"title": "Count Vowels",
+"statement": "Given a string S, count the number of vowels (a, e, i, o, u) in the string.",
+"input": "The only line of input contains a string S (1 ≤ |S| ≤ 10^3).",
+"output": "Print the count of vowels in the string.",
+"constraints": "1 ≤ |S| ≤ 10^3",
+"samples": [
+{
+"input": "programming",
+"output": "3",
+"explanation": "The string 'programming' contains 3 vowels: o, a, and i."
+},
+{
+"input": "hello",
+"output": "2",
+"explanation": "The string 'hello' contains 2 vowels: e and o."
+}
+],
+"difficulty": "Easy",
+"tags": [
+"string"
+],
+"testCases": [
+{
+"input": "engineering",
+"output": "4"
+},
+{
+"input": "ai",
+"output": "2"
+}
+],
+"score": 100
+}
+]
+
+      
