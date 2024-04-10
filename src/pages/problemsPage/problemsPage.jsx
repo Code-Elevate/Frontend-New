@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ProblemsPage = () => {
-    const {contestId} = useParams();
-    const [problems, setProblems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const { contestId } = useParams();
+  const [problems, setProblems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-      const fetchProblems = async () => {
-        try {
-          const response = await axios.get(`https://code-elevate.onrender.com/api/contests/${contestId}`);
-          const { problems } = response.data;
-          setProblems(problems);
-        } catch (error) {
-          console.error('Error fetching problems:', error);
-          setIsLoading(false);
-        }
-      };
-  
-      fetchProblems();
-    }, []);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProblems = async () => {
+      try {
+        const response = await axios.get(
+          `https://code-elevate.onrender.com/api/contests/${contestId}`
+        );
+        const { problems } = response.data;
+        setProblems(problems);
+      } catch (error) {
+        console.error("Error fetching problems:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchProblems();
+  }, []);
 
   const alternatingRowClass = (index) => {
-    return index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-100';
+    return index % 2 === 0 ? "bg-gray-200" : "bg-gray-100";
   };
-  
+
   return (
     <div className="container mx-auto flex justify-center">
       <div className="w-2/3">
@@ -49,7 +53,20 @@ const ProblemsPage = () => {
                   <td className="px-4 py-2">{problem.score}</td>
                   <td className="px-4 py-2">{problem.difficulty}</td>
                   <td className="px-4 py-2">
-                    <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                    <button
+                      onClick={() => {
+                        navigate(
+                          `/contest/${contestId}/problem/${problem.id}`,
+                          {
+                            state: {
+                              problemId: problem.id,
+                              contestId: contestId,
+                            },
+                          }
+                        );
+                      }}
+                      className="my-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                    >
                       Solve Problem
                     </button>
                   </td>

@@ -17,6 +17,8 @@ const SignInPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("req sent");
     try {
       const res = await fetch(
         "https://code-elevate.onrender.com/api/users/login",
@@ -43,7 +45,7 @@ const SignInPage = () => {
       }
     } catch (error) {
       toast.error("An error occurred during login.");
-      console.error("Error logging in:", error);
+      console.log("Error logging in:", error);
     }
   };
 
