@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../../assets/logo.png';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('x-auth-token')); 
-  const [userEmail, setUserEmail] = useState(''); 
-  const [isLoggedOut, setIsLoggedOut] = useState(false); 
-  const navigate = useNavigate(); 
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem("x-auth-token")
+  );
+  const [userEmail, setUserEmail] = useState("");
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const navigate = useNavigate();
+
   const handleSignup = () => {
-    navigate('/signin');
+    navigate("/signin");
   };
-  
+
   const handleLogout = () => {
-    localStorage.removeItem('x-auth-token'); 
+    localStorage.removeItem("x-auth-token");
     setIsLoggedIn(false);
-    setUserEmail('');
-    setIsLoggedOut(true); 
+    setUserEmail("");
+    setIsLoggedOut(true);
   };
-  const handleButtonClick = () =>{
-    alert('User should log in first');
-  }
+  const handleButtonClick = () => {
+    alert("User should log in first");
+  };
 
   useEffect(() => {
     if (isLoggedOut) {
-      navigate('/signin');
+      navigate("/signin");
     }
   }, [isLoggedOut, navigate]);
 
@@ -33,19 +35,36 @@ const Navbar = () => {
       {/* Logo and CodeElevate */}
       <div className="flex items-center">
         <img src={Logo} alt="Logo" className="h-8 w-8" />
-        <a href="#" className="text-white ml-2">CodeElevate</a>
+        <a href="#" className="text-white ml-2">
+          CodeElevate
+        </a>
       </div>
 
       {/* Home and Problems */}
       <ul className="flex justify-center">
-        <li className="mr-6"><a href="/" className="text-white hover:text-blue-800 cursor-pointer">Home</a></li>
-        {!isLoggedIn &&(
-            <li><button  className="text-white hover:text-blue-800 cursor-pointer"
-                         onClick={handleButtonClick}>Problems</button> Problems</li>
+        <li className="mr-6">
+          <a href="/" className="text-white hover:text-blue-800 cursor-pointer">
+            Home
+          </a>
+        </li>
+        {!isLoggedIn && (
+          <li>
+            <button
+              className="text-white hover:text-blue-800 cursor-pointer"
+              onClick={handleButtonClick}
+            >
+              Problems
+            </button>
+          </li>
         )}
         {isLoggedIn && (
           <li>
-            <Link to="/sampleProblems" className="text-white hover:text-blue-800 cursor-pointer">Problems</Link>
+            <Link
+              to="/sampleProblems"
+              className="text-white hover:text-blue-800 cursor-pointer"
+            >
+              Problems
+            </Link>
           </li>
         )}
       </ul>
@@ -55,10 +74,24 @@ const Navbar = () => {
         {isLoggedIn ? (
           <>
             <li className="mr-6">{userEmail}</li>
-            <li><button onClick={handleLogout} className="text-white hover:text-blue-800">Logout</button></li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-blue-800"
+              >
+                Logout
+              </button>
+            </li>
           </>
         ) : (
-          <li><button onClick={handleSignup} className="text-white hover:text-blue-800">Log In</button></li>
+          <li>
+            <button
+              onClick={handleSignup}
+              className="text-white hover:text-blue-800"
+            >
+              Log In
+            </button>
+          </li>
         )}
       </ul>
 
