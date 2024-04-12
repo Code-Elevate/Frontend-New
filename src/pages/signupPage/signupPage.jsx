@@ -11,6 +11,7 @@ const SignUpPage = () => {
   });
   const [passwordError, setPasswordError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [userExists, setUserExistsMessage] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,12 +31,12 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (user.password.length < 6) {
       toast.error("Password must be at least 6 characters long.");
       return;
     }
-
+  
     try {
       const res = await fetch(
         "https://code-elevate.onrender.com/api/users/register",
@@ -47,15 +48,17 @@ const SignUpPage = () => {
           body: JSON.stringify(user),
         }
       );
-
+  
       const data = await res.json();
-
-      if (res.status === 200) {
+  
+      if (res.status === 201) {
         setSuccessMessage("Registration successful!");
         setTimeout(() => {
           setSuccessMessage("");
           navigate("/");
         }, 3000);
+      } else if (res.status === 400) {
+        setUserExistsMessage("User already registered.Sign In instead");
       } else {
         toast.error(data.message || "An error occurred during registration.");
       }
@@ -64,6 +67,7 @@ const SignUpPage = () => {
       console.error("Error registering user:", error);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -148,6 +152,12 @@ const SignUpPage = () => {
           >
             Register
           </button>
+          {successMessage &&(
+            <p className="text-red-500 text-sm">{successMessage}</p>
+          )}
+          {userExists &&(
+            <p className="text-red-500 text-sm">{userExists}</p>
+          )}
         </form>
 
         <div className="mt-4 text-center">

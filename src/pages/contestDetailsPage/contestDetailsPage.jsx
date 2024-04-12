@@ -25,6 +25,9 @@ const ContestDetailsPage = () => {
     fetchContestDetails();
   }, [contestId]); // Re-run effect whenever contestId changes
 
+  // Check if contest is past
+  const isPastContest = new Date() > new Date(contestDetails.endTime);
+
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
@@ -37,7 +40,7 @@ const ContestDetailsPage = () => {
     <div className="min-h-screen bg-gray-100 py-8 px-4">
       {contestDetails && (
         <div className="max-w-4xl mx-auto bg-white p-8 rounded shadow-md">
-          <h2 className="text-2xl font-bold mb-4">{contestDetails.title}</h2>
+          <h2 className="text-2xl font-bold mb-4 gradient-text"> Contest: {contestDetails.title}</h2>
           <p className="mb-4">Description: {contestDetails.description}</p>
           <p>Status: {contestDetails.status}</p>
           <p>Start Time: {contestDetails.startTime}</p>
@@ -51,8 +54,11 @@ const ContestDetailsPage = () => {
           </p>
           <div className="register-button mt-4">
             <Link to={`/contestRegistration/${contestDetails.id}`}>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Register
+              <button 
+                className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${isPastContest ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={isPastContest}
+              >
+                {isPastContest ? 'Contest Ended' : 'Register'}
               </button>
             </Link>
           </div>
@@ -66,6 +72,30 @@ const ContestDetailsPage = () => {
             </ul>
         </div>
       )}
+      <style>
+        {`
+          /* Gradient background styles */
+          .gradient-bg {
+            background-color: #667eea; /* Fallback color */
+            background-image: linear-gradient(to bottom, #667eea, #764ba2); /* Vertical gradient */
+          }
+          .hover\:scale-110:hover {
+            transform: scale(1.1);
+          }
+          .contest-div {
+            margin-bottom: 20px;
+          }
+          .feature-div {
+            margin-top: 20px;
+          }
+          .gradient-text {
+            background-image: linear-gradient(to right, #5a67d8, #886aea);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+          }
+        `}
+      </style>
     </div>
   );
 };

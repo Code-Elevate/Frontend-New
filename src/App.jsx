@@ -12,6 +12,7 @@ import ProblemsPage from "./pages/problemsPage/problemsPage";
 import SampleProblems from "./pages/sampleProblems/sampleProblems";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Editor from "./pages/Editor/Editor";
+import SampleEditor from "./pages/Editor/sampleEditor";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           element={<Editor />}
         />
         <Route path="/sampleProblems" element={<SampleProblems />} />
+        <Route path="/sampleEditor/:problemId" element={<SampleEditor/>} />
       </Routes>
     </Router>
   );

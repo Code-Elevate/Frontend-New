@@ -52,26 +52,24 @@ const HomePage = () => {
     
     const handleExploreButtonClickHostContest = () => {
         if (!isLoggedIn) {
-            // Display a message if the user is not logged in
+            
             alert('Please log in first to explore.');
             navigate('/');
             
         } else {
-            // Navigate to the host contest page
-            // You can replace this with your navigation logic
+           
             console.log('Navigating to host contest page...');
             navigate('/hostContest');
         }
     };
     const handleExploreButtonClickCollabCoding = () => {
         if (!isLoggedIn) {
-            // Display a message if the user is not logged in
+            
             alert('Please log in first to explore.');
             navigate('/');
             
         } else {
-            // Navigate to the host contest page
-            // You can replace this with your navigation logic
+            
             console.log('Navigating to sample problems page...');
             navigate('/problems');
         }
@@ -177,7 +175,7 @@ const HomePage = () => {
               <tbody>
                 {pastContests.map((contest) => (
                   <tr key={contest.id}>
-                    <td className='gradient-text'>{contest.id}</td>
+                    <td className='gradient-text'><Link to={`/contest/${contest.id}`}>{contest.id}</Link></td>
                     <td>{contest.title}</td>
                     <td>{new Date(contest.startTime).toLocaleString()}</td>
                     <td>{new Date(contest.endTime).toLocaleString()}</td>
@@ -200,7 +198,7 @@ const HomePage = () => {
                   together.
             </p>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5"
-                    onClick={{handleExploreButtonClickCollabCoding}}>Explore</button>
+                    onClick={handleExploreButtonClickCollabCoding}>Explore</button>
             </div>
             <div className="feature-div rounded shadow-md p-4 w-1/3 mr-4 h-51 hover:scale-110 transition-transform duration-300 ease-in-out">
             <h2 className="text-2xl font-semibold mb-4 text-center">Host Contest</h2>
